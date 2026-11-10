@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1стр.ру — Новости Стерлитамака</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f4f6;
+            color: #2b2b2b;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        .header {
+            background-color: #1e293b;
+            color: white;
+            padding: 15px 20px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            cursor: pointer;
+        }
+        .header span {
+            color: #ef4444;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        /* Главная страница со списком */
+        .main-page {
+            display: block;
+        }
+        .page-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        .news-card {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .news-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #0f172a;
+        }
+        .news-card h2.target:hover {
+            color: #ef4444;
+        }
+        .news-meta {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        /* Страница самой статьи (изначально скрыта) */
+        .article-page {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .article-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.3;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .article-meta-top {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        .article-page p {
+            font-size: 16px;
+            color: #334155;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <div class="header" onclick="showMain()">1стр.ру <span>— Лента новостей</span></div>
+
+    <div class="container">
+        
+        <!-- ЛЕНТА СТАТЕЙ (ГЛАВНАЯ) -->
+        <div id="main-page" class="main-page">
+            <div class="page-title">Сегодня в Стерлитамаке:</div>
+            
+            <div class="news-card">
+                <h2>В Стерлитамаке отремонтируют три центральные улицы до конца месяца</h2>
+                <div class="news-meta">Городское хозяйство | 12 минут назад</div>
+            </div>
+            
+            <div class="news-card">
+                <h2>Жителям Башкирии рассказали об изменениях в графике выплаты пенсий и пособий</h2>
+                <div class="news-meta">Общество | 45 минут назад</div>
+            </div>
+            
+            <!-- Вот эта ссылка-ловушка -->
+            <div class="news-card" onclick="openTrapArticle()">
+                <h2 class="target" style="color: #ef4444;">ЧП: Двое школьников взорвали петарду «Корсар-19» во дворе дома, повреждена машина</h2>
+                <div class="news-meta" style="color: #ef4444; font-weight: bold;">Происшествия | 1 час назад</div>
+            </div>
+            
+            <div class="news-card">
+                <h2>Стерлитамакский нефтехимический завод увеличил объемы производства экспорта</h2>
+                <div class="news-meta">Экономика | 2 часа назад</div>
+            </div>
+        </div>
+
+        <!-- СТАТЬЯ С СИРЕНОЙ -->
+        <div id="article-page" class="article-page">
+            <div class="back-btn" onclick="showMain()">← Назад в ленту</div>
+            
+            <h1 class="article-title">В Стерлитамаке двое школьников взорвали сверхмощную петарду во дворе жилого дома: обломками повреждена машина</h1>
+            
+            <div class="article-meta-top">Происшествия | Просмотров: 21 845 | Обновлено: только что</div>
+
+            <p>Громкий взрыв, переполошивший жителей многоэтажных домов в Стерлитамаке, оказался следствием опасных игр местных подростков. Сегодня в дневное время двое школьников подожгли и оставили на детской площадке пиротехническое изделие повышенной мощности. Звуковая волна была настолько сильной, что в квартирах задрожали стекла, а у всех припаркованных в округе автомобилей мгновенно сработали охранные системы.</p>
+
+            <p>На место инцидента незамедлительно выехали экстренные службы и наряд полиции. Очевидцы происшествия успели зафиксировать на камеры мобильных телефонов силу задымления и траекторию побега виновников. По счастливой случайности среди прохожих никто не пострадал, однако материальный ущерб оказался весьма значительным.</p>
+
+            <p>Специалисты оперативно изучили остатки разорвавшегося устройства. Судя по найденным на асфальте характерным обломкам плотного пластикового корпуса и фрагментам заводской маркировки, это была крупнокалиберная петарда «Корсар-19». Данный класс пиротехники категорически запрещен к продаже несовершеннолетним из-за высокой концентрации порохового заряда.</p>
+
+            <p>В результате разлета острых пластиковых обломков и воздействия ударной волны серьезные повреждения получил припаркованный неподалеку легковой автомобиль. Осколки пластика пробили лобовое стекло, а взрывная волна оставила глубокие вмятины на элементах кузова. Собственник транспортного средства уже обратился в правоохранительные органы для проведения экспертизы и фиксации убытков.</p>
+
+            <p>На данный момент сотрудники инспекции по делам несовершеннолетних изучают записи с камер наружного наблюдения системы городского мониторинга для установления точных личностей подростков. Родителям школьников грозит административная ответственность и полная обязанность по выплате компенсации за ремонт пострадавшего автомобиля.</p>
+        </div>
+
+    </div>
+
+    <!-- Аудиофайл сирены -->
+    <audio id="siren-sound" src="sirena.mp3" preload="auto" loop></audio>
+
+    <script>
+        const mainPage = document.getElementById('main-page');
+        const articlePage = document.getElementById('article-page');
+        const siren = document.getElementById('siren-sound');
+
+        // Функция открытия статьи-ловушки
+        function openTrapArticle() {
+            // Прячем главную, показываем статью
+            mainPage.style.display = 'none';
+            articlePage.style.display = 'block';
+            
+            // Скроллим в самый верх статьи на всякий случай
+            window.scrollTo(0, 0);
+
+            // Так как пользователь КЛИКНУЛ по карточке, звук включится без блокировок браузера
+            siren.volume = 1.0; 
+            siren.play().catch(err => {
+                console.log("Ошибка воспроизведения:", err);
+            });
+        }
+
+        // Возврат на главную (и выключение сирены)
+        function showMain() {
+            siren.pause();
+            siren.currentTime = 0; // Сбросить звук на начало
+            articlePage.style.display = 'none';
+            mainPage.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
